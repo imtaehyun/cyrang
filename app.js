@@ -5,7 +5,7 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , user = require('./routes/user')
+  , interest = require('./routes/interest')
   , http = require('http')
   , path = require('path');
 
@@ -27,8 +27,6 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-
-
 function cyrang_interest(seq, item_count, item) {
     this.seq = seq;
     this.item_count = item_count;
@@ -39,10 +37,16 @@ var option = {
     host: 'cyrang.cyworld.com',
     path: '/if/get_interest',
     method: 'GET'
+};
+
+var jsonItems;
+function showItems(items) {
+//    console.log("[showItems]" + JSON.stringify(items));
+    jsonItems = items;
 }
 
-var loop = function(url) {
-    var request = http.request(url, function(res) {
+function get_interest (option, fn) {
+    var request = http.request(option, function(res) {
         var body ='';
         res.on('data', function(chunk) {
             body += chunk.toString('utf8');
@@ -53,7 +57,7 @@ var loop = function(url) {
             var seq = jsonObj.result.set[0].seq;
             var item_count = jsonObj.result.set[0].item_count;
             var items = jsonObj.result.set[0].item;
-
+//            console.log(items);
             console.log("next_seq : " + seq);
             console.log("item_count : " + item_count);
 //        console.log("item : " + JSON.stringify(items));
@@ -65,16 +69,25 @@ var loop = function(url) {
                 method : 'GET'
             }
             console.log(option);
+            return fn(items);
+        });
+
+        res.on('error', function(e) {
+            console.log('Problem with request: ' + e.message);
         });
     });
     request.end();
 };
-setInterval(function(){
-    loop(option);
-}, 15000);
 
-app.get('/', routes.index);
-app.get('/users', user.list);
+//get_interest(option, showItems);
+
+app.get('/', function(req, res) {
+    res.redirect('/interest');
+});
+app.get('/test', function(req, res) {
+    get_interest(option, showItems);
+    res.render('test', {title : jsonItems});
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

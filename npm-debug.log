@@ -1,0 +1,31 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/ec2-user/nvm/v0.8.14/bin/node',
+1 verbose cli   '/home/ec2-user/nvm/v0.8.14/bin/npm',
+1 verbose cli   'start' ]
+2 info using npm@1.1.65
+3 info using node@v0.8.14
+4 verbose read json /home/ec2-user/dev/cyrang/package.json
+5 verbose run-script [ 'prestart', 'start', 'poststart' ]
+6 info prestart cyrang@0.0.1
+7 info start cyrang@0.0.1
+8 verbose unsafe-perm in lifecycle true
+9 silly exec sh "-c" "forever nodemon --debug --exitcrash app.js"
+10 silly sh,-c,forever nodemon --debug --exitcrash app.js,/home/ec2-user/dev/cyrang spawning
+11 info cyrang@0.0.1 Failed to exec start script
+12 error cyrang@0.0.1 start: `forever nodemon --debug --exitcrash app.js`
+12 error `sh "-c" "forever nodemon --debug --exitcrash app.js"` failed with 255
+13 error Failed at the cyrang@0.0.1 start script.
+13 error This is most likely a problem with the cyrang package,
+13 error not with npm itself.
+13 error Tell the author that this fails on your system:
+13 error     forever nodemon --debug --exitcrash app.js
+13 error You can get their info via:
+13 error     npm owner ls cyrang
+13 error There is likely additional logging output above.
+14 error System Linux 3.2.30-49.59.amzn1.x86_64
+15 error command "/home/ec2-user/nvm/v0.8.14/bin/node" "/home/ec2-user/nvm/v0.8.14/bin/npm" "start"
+16 error cwd /home/ec2-user/dev/cyrang
+17 error node -v v0.8.14
+18 error npm -v 1.1.65
+19 error code ELIFECYCLE
+20 verbose exit [ 1, true ]
