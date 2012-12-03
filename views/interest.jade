@@ -1,0 +1,20 @@
+!!!
+html
+    head
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        title Cyrang
+        link(rel="stylesheet", href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css")
+        script(src="http://code.jquery.com/jquery-1.8.2.min.js")
+        script(src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js")
+    body
+        div(id="cyrang_interest", data-role="page", data-title="Cyrang")
+            div(data-role="header")
+                h1 싸이랑 관심집중
+            div(data-role="content")
+                ul(data-role="listview")
+                    each item in list
+                        li
+                            a(href="http://minihp.cyworld.com/svcs/Image.cy/One/50298254?board_no=215&item_seq=426494641&list_type=1&urlstr=phot")
+                                img(src="#{item.thumb_url}")
+                                h3 #{item.title}
+                                p #{item.text}
