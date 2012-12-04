@@ -27,6 +27,9 @@ http://m.minihp.cyworld.nate.com/minihp/photoView.php?hp_id=spwritertid&bo_no=sp
 mBlogPostViewURL
 http://m.cyworld.nate.com/blog/postView.php?home_id=spwriterbid&post_seq=spitemseq
 
+## DONE
+- ~~json을 app.js내에서 처리하도록 변경 필요~~ (jade파일 내에서 분기하도록 처리)
+- ~~각각의 user가 접근했을때 seq를 랜덤하게 부여하도록 변경 필요~~
+
 ## TODO
-- json을 app.js내에서 처리하도록 변경 필요
-- 각각의 user가 접근했을때 seq를 랜덤하게 부여하도록 변경 필요
+- UI를 http://m.pinterest.com 처럼 해보자 (mobile, tablet 각각 다르게)
