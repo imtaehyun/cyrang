@@ -2,7 +2,7 @@
 html
     head
         meta(name="viewport", content="width=device-width, initial-scale=1")
-        title Cyrang
+        title #{title}
         link(rel="stylesheet", href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css")
         script(src="http://code.jquery.com/jquery-1.8.2.min.js")
         script(src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js")
@@ -14,7 +14,11 @@ html
                 ul(data-role="listview")
                     each item in list
                         li
-                            a(href="http://minihp.cyworld.com/svcs/Image.cy/One/50298254?board_no=215&item_seq=426494641&list_type=1&urlstr=phot")
+                            - var url = (item.tocy_info.spsvccode === '2')? "http://m.minihp.cyworld.nate.com/minihp/photoView.php?hp_id="+ item.tocy_info.spwritertid +"&bo_no=" + item.tocy_info.spitemseq + "&frompage=1&fromvt=thumb" : "http://m.cyworld.nate.com/blog/postView.php?home_id=" + item.tocy_info.spwriterbid + "&post_seq=" + item.tocy_info.spitemseq
+                            a(href=url)
                                 img(src="#{item.thumb_url}")
-                                h3 #{item.title}
+                                - var text = (item.title.replace(/^\s*/,'') === '')? '제목없음':item.title
+                                h3= text
                                 p #{item.text}
+                    li
+                        a(href="/interest/" + seq) 더보기
